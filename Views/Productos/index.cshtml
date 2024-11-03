@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Productos";
+}
+@using Models;
+@model List<Models.Producto>;
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <style>
+            .icono {
+                width: 24px;
+                height: 24px;
+
+            }
+        </style>
+        <section class="boton-agregar">
+            <h2>Lista de Productos</h2>
+            <button type="button" class="btn btn-outline-success"
+                onclick="location.href='@Url.Action("Agregar", "Productos")'">Agregar producto</button>
+        </section>
+
+        <section class="tabla">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Editar</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Producto producto in Model)
+                    {
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-info"
+                                    onclick="location.href='@Url.Action("Modificar", "Productos", new {id = producto.IdProducto})'"><img
+                                        src="http://localhost:5020/img/edit-icon-16.png" class="img-fluid icono"
+                                        alt="Editar"></button>
+
+                            </td>
+                            <td>@producto.IdProducto</td>
+                            <td>@producto.Descripcion</td>
+                            <td>@producto.Precio</td>
+                            <td>
+                                <button type="button" class="btn btn-danger"
+                                    onclick="location.href='@Url.Action("Eliminar", "Productos", new {id = producto.IdProducto})'"><img
+                                        src="http://localhost:5020/img/R.png" class="img-fluid icono"
+                                        alt="Eliminar"></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
