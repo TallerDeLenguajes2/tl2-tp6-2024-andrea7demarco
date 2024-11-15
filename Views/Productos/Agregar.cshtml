@@ -1,5 +1,5 @@
 @using Models;
-@model Models.Producto // Asegúrate de definir el modelo
+@model Models.Producto 
 
 @{
     ViewData["Title"] = "Agregar";
@@ -15,7 +15,7 @@
 </head>
 <body>
     <main>
-        <h2>Formulario de Agregar Producto</h2>
+        <h2 class="text-center">Formulario de Agregar Producto</h2>
         <section>
             <form asp-controller="Productos" asp-action="GuardarProducto" method="post" class="w-50 mx-auto">
                 <div class="mb-3">

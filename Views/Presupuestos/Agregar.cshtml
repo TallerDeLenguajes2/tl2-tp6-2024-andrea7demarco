@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Agregar";
+}
+@using Models;
+@model Models.Presupuesto;
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <h2 class="text-center">Agregar Presupuesto</h2>
+        <section>
+            <form asp-controller="Presupuestos" asp-action="GuardarPresupuesto" method="post" class="w-50 mx-auto">
+                <div class="mb-3">
+                    <label for="NombreDestinatario" class="form-label">Nombre destinatario</label>
+                    <input asp-for="NombreDestinatario" type="text" class="form-control" id="NombreDestinatario" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="FechaCreacion" class="form-label">Fecha Creacion</label>
+                    <input asp-for="FechaCreacion" type="date" class="form-control" id="FechaCreacion" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

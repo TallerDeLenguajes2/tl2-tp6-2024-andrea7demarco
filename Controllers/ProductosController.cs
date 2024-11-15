@@ -76,6 +76,20 @@ public class ProductosController : Controller
         }
     }
 
+    public IActionResult Eliminar(int id)
+    {
+        try
+        {
+            prodRep.EliminarProductoPorID(id);
+            return RedirectToAction("Index");
+        }
+        catch(Exception)
+        {
+            return StatusCode(500, "No se pudo eliminar el producto");
+        }
+
+    }
+
 
 
     

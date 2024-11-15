@@ -1,9 +1,9 @@
-@using Models;
-@model Models.Producto;
-
 @{
     ViewData["Title"] = "Modificar";
 }
+@using Models;
+@model Models.Presupuesto;
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,17 +17,17 @@
     <main>
         <h2 class="text-center">Editar producto</h2>
         <section>
-            <form asp-controller="Productos" asp-action="ModificarProducto" method="post" class="w-50 mx-auto">
+            <form asp-controller="Presupuestos" asp-action="ModificarPresupuesto" method="post" class="w-50 mx-auto">
                 <div class="mb-3">
-                    <input type="hidden" asp-for="IdProducto">
+                    <input type="hidden" asp-for="IdPresupuesto">
                 </div>
                 <div class="mb-3">
-                    <label for="Descripcion" class="form-label">Descripción</label>
-                    <input asp-for="Descripcion" type="text" class="form-control" id="Descripcion" required>
+                    <label for="NombreDestinatario" class="form-label">Nombre Destinatario</label>
+                    <input asp-for="NombreDestinatario" type="text" class="form-control" id="NombreDestinatario" required>
                 </div>
                 <div class="mb-3">
-                    <label for="Precio" class="form-label">Precio</label>
-                    <input asp-for="Precio" type="number" class="form-control" id="Precio" step="0.01" required>
+                    <label for="FechaCreacion" class="form-label">Fecha creación</label>
+                    <input asp-for="FechaCreacion" type="date" class="form-control" id="FechaCreacion"  required>
                 </div>
                 <button type="submit" class="btn btn-primary">Aplicar</button>
             </form>

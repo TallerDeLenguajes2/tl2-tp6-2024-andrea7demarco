@@ -5,7 +5,7 @@ namespace Models;
         public string? NombreDestinatario { get; set; }
 
         public string? FechaCreacion {get; set; }
-        private List<PresupuestoDetalle> Detalle { get; set; } = new List<PresupuestoDetalle>();
+        public List<PresupuestoDetalle> Detalle { get; set; } = new List<PresupuestoDetalle>();
 
         public void AgregarProductos(Producto prod, int cant)
         {

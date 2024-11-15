@@ -90,7 +90,8 @@ public void EliminarProductoPorID(int id)
 {
    using(SqliteConnection connection = new SqliteConnection(CadenaDeConexion))
    {
-      string query = "DELETE FROM Productos WHERE idProductos = (@id)";
+      connection.Open();
+      string query = "DELETE FROM Productos WHERE idProducto = (@id)";
       var command = new SqliteCommand(query, connection);
       command.Parameters.AddWithValue("@id", id);
       command.ExecuteNonQuery();

@@ -1,0 +1,79 @@
+@{
+    ViewData["Title"] = "Detalle";
+}
+@using Models;
+@model List<Models.PresupuestoDetalle>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Presupuesto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <style>
+            .icono {
+                width: 24px;
+                height: 24px;
+
+            }
+        </style>
+        <section class="boton-agregar">
+            <h2 class="text-center">Detalle del Presupuesto</h2>
+        </section>
+
+
+        <section class="tabla">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <td><p>No hay detalle disponible</p></td>
+                    }
+                    else
+                    {
+                        @foreach (var detalle in Model)
+                        {
+                            <tr>
+                                <td>@detalle.Producto?.IdProducto</td>
+                                <td>@detalle.Producto?.Descripcion</td>
+                                <td>@detalle.Producto?.Precio</td>
+                                <td>@detalle.Cantidad</td>
+                                <td>
+                                    <button type="button" class="btn btn-info"
+                                        onclick="location.href='@Url.Action("Modificar", "Productos", new { id = detalle.Producto?.IdProducto })'">
+                                        <img src="http://localhost:5020/img/edit-icon-16.png" class="img-fluid icono"
+                                            alt="Editar">
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                        onclick="if(confirm('¿Estás seguro de que deseas eliminar este producto?')) location.href='@Url.Action("Eliminar", "Productos", new { id = detalle.Producto?.IdProducto })'">
+                                        <img src="http://localhost:5020/img/R.png" class="img-fluid icono" alt="Eliminar">
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
