@@ -91,7 +91,6 @@ public class PresupuestosController : Controller
                 return BadRequest();
 
             Presupuesto entidad = presRep.BuscarPresupuestoPorID(presupuesto.IdPresupuesto);
-            entidad.NombreDestinatario = presupuesto.NombreDestinatario;
             entidad.FechaCreacion = presupuesto.FechaCreacion;
             presRep.ModificarPresupuesto(entidad.IdPresupuesto, entidad);
 

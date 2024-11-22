@@ -2,8 +2,6 @@ namespace Models;
     public class Presupuesto
     {
         public int IdPresupuesto { get; set; }
-        public string? NombreDestinatario { get; set; }
-
         public string? FechaCreacion {get; set; }
 
         public Cliente? Cliente {get; set;}

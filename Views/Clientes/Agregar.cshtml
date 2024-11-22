@@ -1,0 +1,41 @@
+@using Models;
+@model Models.Cliente
+
+@{
+    ViewData["Title"] = "Agregar";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Clientes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <h2 class="text-center">Formulario de Agregar Cliente</h2>
+        <section>
+            <form asp-controller="Clientes" asp-action="GuardarCliente" method="post" class="w-50 mx-auto">
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="form-label">Nombre</label>
+                    <input asp-for="Nombre" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Telefono" class="form-label">Telefono</label>
+                    <input asp-for="Telefono" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

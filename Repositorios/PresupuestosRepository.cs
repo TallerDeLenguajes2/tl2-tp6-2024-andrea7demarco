@@ -19,7 +19,6 @@ public class PresupuestoRepository
                 {
                     var presupuesto = new Presupuesto();
                     presupuesto.IdPresupuesto = Convert.ToInt32(reader["idPresupuesto"]);
-                    presupuesto.NombreDestinatario = reader["NombreDestinatario"].ToString();
                     presupuesto.FechaCreacion = Convert.ToString(reader["FechaCreacion"]);
                     listaPresupuesto.Add(presupuesto);
 
@@ -41,11 +40,10 @@ public void CrearPresupuesto(Presupuesto presupuesto)
         connection.Open();
         
         // Inserción del presupuesto
-        var queryPresupuesto = "INSERT INTO Presupuestos (idPresupuesto, NombreDestinatario, FechaCreacion) VALUES (@idPresupuesto, @NombreDestinatario, @FechaCreacion)";
+        var queryPresupuesto = "INSERT INTO Presupuestos (idPresupuesto, FechaCreacion) VALUES (@idPresupuesto, @FechaCreacion)";
         using (var commandPresupuesto = new SqliteCommand(queryPresupuesto, connection))
         {
             commandPresupuesto.Parameters.Add(new SqliteParameter("@idPresupuesto", presupuesto.IdPresupuesto));
-            commandPresupuesto.Parameters.Add(new SqliteParameter("@NombreDestinatario", presupuesto.NombreDestinatario));
             commandPresupuesto.Parameters.Add(new SqliteParameter("@FechaCreacion", presupuesto.FechaCreacion));
             commandPresupuesto.ExecuteNonQuery();
         }
@@ -153,7 +151,6 @@ public Presupuesto BuscarPresupuestoPorID(int id)
                 presupuesto = new Presupuesto
                 {
                     IdPresupuesto = Convert.ToInt32(reader["idPresupuesto"]),
-                    NombreDestinatario = reader["NombreDestinatario"].ToString() ?? "No tiene destinatario",
                     FechaCreacion = reader["FechaCreacion"].ToString()
                 };
             }
@@ -167,12 +164,11 @@ public void ModificarPresupuesto(int id, Presupuesto presupuesto)
 {
     using (SqliteConnection connection = new SqliteConnection(CadenaDeConexion))
     {
-        var query = @"UPDATE Presupuestos SET NombreDestinatario = @destinatario, FechaCreacion = @fecha
+        var query = @"UPDATE Presupuestos SET FechaCreacion = @fecha
         WHERE idPresupuesto = @id";
         connection.Open();
         var command = new SqliteCommand(query, connection);
         command.Parameters.Add(new SqliteParameter("@id", presupuesto.IdPresupuesto));
-        command.Parameters.Add(new SqliteParameter("@destinatario", presupuesto.NombreDestinatario));
         command.Parameters.Add(new SqliteParameter("@fecha", presupuesto.FechaCreacion));
         command.ExecuteNonQuery();
         connection.Close();

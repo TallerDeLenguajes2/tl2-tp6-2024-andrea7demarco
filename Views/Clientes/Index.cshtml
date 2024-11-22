@@ -1,8 +1,8 @@
 @{
-    ViewData["Title"] = "Presupuestos";
+    ViewData["Title"] = "Clientes";
 }
 @using Models;
-@model List<Models.Presupuesto>;
+@model List<Models.Cliente>;
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de presupuestos</title>
+    <title>Lista de Clientes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 
@@ -24,9 +24,9 @@
             }
         </style>
         <section class="boton-agregar">
-            <h2 class="text-center">Lista de Presupuestos</h2>
+            <h2 class="text-center">Lista de Clientes</h2>
             <button type="button" class="btn btn-outline-success"
-                onclick="location.href='@Url.Action("Agregar", "Presupuestos")'">Agregar presupuesto</button>
+                onclick="location.href='@Url.Action("Agregar", "Clientes")'">Agregar cliente</button>
         </section>
 
         <section class="tabla">
@@ -35,34 +35,30 @@
                     <tr>
                         <th scope="col">Editar</th>
                         <th scope="col">ID</th>
-                        <th scope="col">Fecha Creacion</th>
-                        <th scope="col">Detalle</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Teléfono</th>
                         <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Presupuesto presupuesto in Model)
+                    @foreach (Cliente cliente in Model)
                     {
                         <tr>
                             <td>
                                 <button type="button" class="btn btn-info"
-                                    onclick="location.href='@Url.Action("Modificar", "Presupuestos", new {id = presupuesto.IdPresupuesto})'"><img
+                                    onclick="location.href='@Url.Action("Modificar", "Clientes", new {id = cliente.IdCliente})'"><img
                                         src="http://localhost:5020/img/edit-icon-16.png" class="img-fluid icono"
                                         alt="Editar"></button>
 
                             </td>
-                            <td>@presupuesto.IdPresupuesto</td>
-                            <td>@presupuesto.FechaCreacion</td>
-                            <td>
-
-                                <button type="button" class="btn btn-secondary"
-                                    onclick="location.href='@Url.Action("Detalle", "Presupuestos", new {id = presupuesto.IdPresupuesto})'">Ver
-                                </button>
-                            </td>
-
+                            <td>@cliente.IdCliente</td>
+                            <td>@cliente.Nombre</td>
+                            <td>@cliente.Email</td>
+                            <td>@cliente.Telefono</td>
                             <td>
                                 <button type="button" class="btn btn-danger"
-                                    onclick="if(confirm('¿Estás seguro de que deseas eliminar este producto?')) location.href='@Url.Action("Eliminar", "Presupuestos", new {id = presupuesto.IdPresupuesto})'">
+                                    onclick="if(confirm('¿Estás seguro de que deseas eliminar este cliente?')) location.href='@Url.Action("Eliminar", "Clientes", new {id = cliente.IdCliente})'">
                                     <img src="http://localhost:5020/img/R.png" class="img-fluid icono" alt="Eliminar">
                                 </button>
                             </td>
@@ -75,4 +71,3 @@
 </body>
 
 </html>
-
