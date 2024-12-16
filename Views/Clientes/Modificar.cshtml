@@ -1,0 +1,41 @@
+@using Models;
+@model Models.Cliente;
+
+@{
+    ViewData["Title"] = "Modificar";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Clientes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <main>
+        <h2 class="text-center">Editar Cliente</h2>
+        <section>
+            <form asp-controller="Clientes" asp-action="ModificarCliente" method="post" class="w-50 mx-auto">
+                <div class="mb-3">
+                    <input type="hidden" asp-for="IdCliente">
+                </div>
+                <div class="mb-3">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input asp-for="Nombre" type="text" class="form-control" id="Nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="Email" class="form-control" id="Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Telefono" class="form-label">Telefono</label>
+                    <input asp-for="Telefono" type="Telephone" class="form-control" id="Telefono" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Aplicar</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

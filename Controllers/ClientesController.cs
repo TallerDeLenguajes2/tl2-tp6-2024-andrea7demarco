@@ -48,25 +48,26 @@ public class ClientesController : Controller
         cliRep.CrearCliente(cliente);
         return RedirectToAction("Index");
     }
-/*
+
     public IActionResult Modificar(int id)
     {
-        var cliente = cliRep.BuscaclientePorID(id);
+        var cliente = cliRep.BuscaClientePorID(id);
         return View(cliente); 
     }
 
     [HttpPost]
-    public IActionResult Modificarcliente(Cliente cliente)
+    public IActionResult ModificarCliente(Cliente cliente)
     {
         try
         {
             if(!ModelState.IsValid)
                 return BadRequest();
 
-            Cliente entidad = cliRep.BuscaclientePorID(cliente.Idcliente);
-            entidad.Descripcion = cliente.Descripcion;
-            entidad.Precio = cliente.Precio;
-            cliRep.Modificarcliente(entidad.Idcliente, entidad);
+            Cliente entidad = cliRep.BuscaClientePorID(cliente.IdCliente);
+            entidad.Nombre = cliente.Nombre;
+            entidad.Email = cliente.Email;
+            entidad.Telefono = cliente.Telefono;
+            cliRep.ModificarCliente(entidad.IdCliente, entidad);
 
             return RedirectToAction("Index");
         }
@@ -76,7 +77,7 @@ public class ClientesController : Controller
         }
     }
 
-    public IActionResult Eliminar(int id)
+/*    public IActionResult Eliminar(int id)
     {
         try
         {
@@ -90,8 +91,8 @@ public class ClientesController : Controller
 
     }
 
-
 */
+
     
 
 
