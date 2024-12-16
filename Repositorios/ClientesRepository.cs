@@ -94,6 +94,19 @@ public Cliente BuscaClientePorID(int id)
     return cliente ?? throw new Exception("Cliente no encontrado");
 }
 
+public void EliminarClientePorID(int id)
+{
+   using(SqliteConnection connection = new SqliteConnection(CadenaDeConexion))
+   {
+      connection.Open();
+      string query = "DELETE FROM Clientes WHERE ClienteId = (@id)";
+      var command = new SqliteCommand(query, connection);
+      command.Parameters.AddWithValue("@id", id);
+      command.ExecuteNonQuery();
+      connection.Close();
+   }
+}
+
 }
 
 

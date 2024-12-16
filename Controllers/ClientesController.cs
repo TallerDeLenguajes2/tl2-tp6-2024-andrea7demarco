@@ -12,7 +12,7 @@ public class ClientesController : Controller
     private readonly ILogger<ClientesController> _logger;
     private List<Cliente> Clientes;
     private ClientesRepository cliRep;
-    
+
 
     public ClientesController(ILogger<ClientesController> logger)
     {
@@ -37,7 +37,7 @@ public class ClientesController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-   public IActionResult Agregar()
+    public IActionResult Agregar()
     {
         return View();
     }
@@ -52,7 +52,7 @@ public class ClientesController : Controller
     public IActionResult Modificar(int id)
     {
         var cliente = cliRep.BuscaClientePorID(id);
-        return View(cliente); 
+        return View(cliente);
     }
 
     [HttpPost]
@@ -60,7 +60,7 @@ public class ClientesController : Controller
     {
         try
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             Cliente entidad = cliRep.BuscaClientePorID(cliente.IdCliente);
@@ -71,29 +71,29 @@ public class ClientesController : Controller
 
             return RedirectToAction("Index");
         }
-        catch(Exception)
+        catch (Exception)
         {
             return StatusCode(500, "No se pudo modificar el nombre del cliente");
         }
     }
 
-/*    public IActionResult Eliminar(int id)
+    public IActionResult Eliminar(int id)
     {
         try
         {
             cliRep.EliminarClientePorID(id);
             return RedirectToAction("Index");
         }
-        catch(Exception)
+        catch (Exception)
         {
             return StatusCode(500, "No se pudo eliminar el cliente");
         }
 
     }
 
-*/
 
-    
+
+
 
 
 
